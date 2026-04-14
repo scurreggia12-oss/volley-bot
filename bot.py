@@ -116,7 +116,7 @@ def genera_pdf():
 
     y = 760
 
-    conn = get_conn()
+    conn = sqlite3.connect("volley.db")
     cur = conn.cursor()
 
     cur.execute("""
@@ -132,12 +132,16 @@ def genera_pdf():
     c.drawString(100, y, "DEBITI:")
     y -= 30
 
+    if not debiti:
+        c.drawString(100, y, "Nessun debito 🎉")
+        y -= 20
+
     for d in debiti:
         c.drawString(100, y, f"{d[0]} {d[1]} - {d[2]} €")
         y -= 20
 
-    c.save()
     conn.close()
+    c.save()
 
     return file
 
