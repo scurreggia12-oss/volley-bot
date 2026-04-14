@@ -109,7 +109,7 @@ def aggiungi_presenza_db(atleta_id):
 # ---------------- PDF ----------------
 
 def genera_pdf():
-    file = "report_mensile.pdf"
+    file = "/tmp/report_mensile.pdf"
     c = canvas.Canvas(file)
 
     c.drawString(100, 800, "REPORT MENSILE VOLLEY")
